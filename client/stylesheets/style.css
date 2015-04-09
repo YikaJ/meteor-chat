@@ -1,0 +1,130 @@
+body{
+    background: url("images/bg.png") #c0c0c0;
+}
+
+.title{
+    color: #FFF;
+}
+
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.container{
+    max-width: 960px;
+    min-width: 930px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 50px;
+}
+
+/*
+ * 登陆表单
+ */
+#userForm{
+    width: 300px;
+    margin: 100px auto;
+}
+#userForm h1{
+    color: #FFF;
+    text-align: center;
+}
+#userForm div{
+    margin: 10px 0;
+}
+#userForm input{
+    padding: 10px;
+    width: 275px;
+}
+#userForm button{
+    padding: 10px;
+    display: block;
+    width: 300px;
+    border: 0;
+}
+#userForm button:hover{
+    background: #CFEFAC;
+    transition: background 0.3s;
+}
+/*
+ * friendList,好友列表
+ */
+.friendsList{
+    list-style: none;
+    border: 1px solid #EFEFEF;
+    float: left;
+    width: 320px;
+    background: #DFDFDF;
+    height: 480px;
+    border-radius: 3%;
+}
+
+.friendsList a{
+    color: #666;
+}
+
+.friendsList-header a{
+    float: left;
+    text-align: center;
+    width: 159px;
+    padding: 20px 0;
+}
+
+.friendsList-header a:first-child{
+    border-right: 2px solid #EFEFEF;
+}
+
+.friendsList ul{
+    background: #FFFFFF;
+    height: 380px;
+}
+
+.friendsList li a{
+    display: block;
+    padding: 20px;
+}
+
+.friendsList li a{
+    border-bottom: 1px solid #EEE;
+}
+
+
+/*
+ * 对话框
+ */
+
+.dialog{
+    float: right;
+    border: 1px solid #EFEFEF;
+    width: 600px;
+    height: 480px;
+    background: #DFDFDF;
+    border-radius: 3%;
+}
+
+.dialog header h3{
+    text-align: right;
+    padding: 1px 20px;
+}
+
+.chatting{
+    height: 380px;
+    background: #FFF;
+}
+
+.sendMessage{
+    padding: 10px;
+    text-align: center;
+}
+
+.sendMessage input{
+    padding: 5px;
+}
+
+.sendMessage button{
+    padding: 5px 10px;
+    border: 0;
+    color: #FFF;
+}
