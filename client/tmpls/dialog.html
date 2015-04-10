@@ -1,12 +1,19 @@
 <template name="dialog">
-  <header>
-    <h3>Yika</h3>
-  </header>
-  <ul class="chatting">
-
-  </ul>
-  <div class="clearfix sendMessage">
-    <input type="text" placeholder="输入文字..."/>
-    <button>发送</button>
-  </div>
+    <div class="dialog">
+        <header>
+            <h3>{{chatRoomName}}</h3>
+        </header>
+        <ul class="chatting">
+            {{#each chatRecord}}
+              <li>
+                <span class="author">{{author}}: </span>
+                <span class="content">{{content}}</span>
+              </li>
+            {{/each}}
+        </ul>
+        <div class="clearfix sendMessage">
+            <input type="text" placeholder="输入文字..."/>
+            <button>发送</button>
+        </div>
+    </div>
 </template>

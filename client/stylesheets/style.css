@@ -82,7 +82,6 @@ body{
     font-size: 12px;
     text-decoration: underline;
     color: #DFDFDF;
-    cursor: pointer;
 }
 #logout:hover{
     color: #FFF;
@@ -150,8 +149,14 @@ body{
 }
 
 .chatting{
-    height: 380px;
+    padding: 10px;
+    height: 360px;
     background: #FFF;
+    overflow: auto;
+}
+
+.chatting li{
+    margin: 10px 0;
 }
 
 .sendMessage{
@@ -167,4 +172,8 @@ body{
     padding: 5px 10px;
     border: 0;
     color: #FFF;
+}
+.sendMessage button:hover{
+    background: #333;
+    transition: background 0.3s;
 }

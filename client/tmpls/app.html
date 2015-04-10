@@ -1,8 +1,11 @@
 <template name="app">
-  <div class="friendsList">
-    {{> friendsList}}
-  </div>
-  <div class="dialog">
-    {{> dialog}}
-  </div>
+    <header class="clearfix app-header">
+        <h2 class="fl">chat系统</h2>
+        <div class="fr">
+        <span>{{currentUser.username}},你好！</span>
+        <a href="/" id="logout">注销用户</a>
+        </div>
+    </header>
+        {{> friendsList}}
+        {{> yield}}
 </template>

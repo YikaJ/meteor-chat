@@ -2,13 +2,12 @@ Template.layout.helpers({
 
 });
 
-Template.layout.events({
+Template.app.events({
     'click #logout': function(event, template){
         event.preventDefault();
-        console.log('zhuxiao!');
 
         Meteor.logout(function(){
-            console.log('zhuxiao!')
+            Router.go("/");
         });
     }
 });

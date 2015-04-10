@@ -1,11 +1,13 @@
 <template name="friendsList">
-  <div class="friendsList-header clearfix">
-    <a href="javascript:" class="active">聊天列表</a>
-    <a href="javascript:">好友列表</a>
-  </div>
-  <ul>
-  {{#each friends}}
-    <li><a href="">{{this}}</a></li>
-  {{/each}}
-  </ul>
+  <div class="friendsList">
+      <div class="friendsList-header clearfix">
+        <a href="javascript:" class="active">聊天列表</a>
+        <a href="javascript:">好友列表</a>
+      </div>
+      <ul>
+      {{#each friends}}
+        <li><a href="{{link}}">{{name}}</a></li>
+      {{/each}}
+      </ul>
+    </div>
 </template>
