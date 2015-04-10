@@ -2,8 +2,16 @@ body{
     background: url("images/bg.png") #c0c0c0;
 }
 
-.title{
-    color: #FFF;
+/*
+ * Tools样式
+ */
+
+.fl{
+    float: left;
+}
+
+.fr{
+    float: right;
 }
 
 .clearfix:after{
@@ -11,6 +19,12 @@ body{
     display: table;
     clear: both;
 }
+
+
+/*
+ * 基础样式
+ */
+
 
 .container{
     max-width: 960px;
@@ -26,6 +40,10 @@ body{
 #userForm{
     width: 300px;
     margin: 100px auto;
+    border: 1px solid #FFF;
+    padding: 30px 150px;
+    border-radius: 5px;
+    box-shadow: #fff 0 0 50px;
 }
 #userForm h1{
     color: #FFF;
@@ -48,6 +66,28 @@ body{
     background: #CFEFAC;
     transition: background 0.3s;
 }
+/*
+ * App样式
+ */
+.app-header{
+    color: #FFF;
+    margin: 20px 0;
+}
+
+.app-header h2{
+    margin: 0 15px;
+}
+
+#logout{
+    font-size: 12px;
+    text-decoration: underline;
+    color: #DFDFDF;
+    cursor: pointer;
+}
+#logout:hover{
+    color: #FFF;
+}
+
 /*
  * friendList,好友列表
  */

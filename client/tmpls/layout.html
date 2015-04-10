@@ -1,6 +1,15 @@
 <template name="layout">
-  <div class="container clearfix">
-    <h3 class="title">通讯系统</h3>
-    {{> yield}}
-  </div>
+    <div class="container clearfix">
+        <header class="clearfix app-header">
+            <h2 class="fl">chat系统</h2>
+            {{#if currentUser}}
+              <div class="fr">
+                <span>{{currentUser.username}},你好！</span>
+                <a id="logout">注销用户</a>
+              </div>
+            {{/if}}
+        </header>
+    <!--yield域用于动态渲染-->
+        {{> yield}}
+    </div>
 </template>

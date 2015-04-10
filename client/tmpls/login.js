@@ -1,7 +1,12 @@
+//路由处理
+if(Meteor.userId()){
+    Router.go('app');
+}
 
+//Template.events和backbone的事件处理十分相像
 Template.login.events({
     //提交登陆表单
-    'submit': function(event, template){
+    'submit #userForm': function(event, template){
         event.preventDefault();
 
         var username = template.$('[name=username]').val();
@@ -16,3 +21,4 @@ Template.login.events({
         });
     }
 });
+
