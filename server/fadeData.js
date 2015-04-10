@@ -8,7 +8,7 @@ if(Meteor.users.find().count() === 0){
         friends: ['yika', 'jimklose', 'kelvin', 'youmei'],
         chatRooms: [
             {
-                roomId: 1,
+                roomId: '1',
                 roomName: 'yika',
                 roomType: 0 //0为单人，1为多人。
             }
@@ -22,7 +22,7 @@ if(Meteor.users.find().count() === 0){
         friends: ['admin', 'jimklose', 'kelvin', 'youmei'],
         chatRooms: [
             {
-                roomId: 1,
+                roomId: '1',
                 roomName: 'admin',
                 roomType: 0 //0为单人，1为多人。
             }

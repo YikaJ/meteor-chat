@@ -1,6 +1,5 @@
 //模板初始化
 Template.dialog.onRendered(function(){
-
     this.$(".chatting").scrollTop(10000);
 });
 
@@ -34,6 +33,7 @@ Template.dialog.helpers({
 
 //DOM事件处理
 Template.dialog.events({
+    // 提交信息
     'submit .sendMessage': function(event, template){
         event.preventDefault();
 
@@ -54,5 +54,14 @@ Template.dialog.events({
             template.$('.sendMessage input').val("");
             template.$(".chatting").scrollTop(10000);
         });
+    },
+
+    // 删除记录
+    "click .sendMessage button[type=button]": function(event, template){
+        if(confirm("您的聊天记录将会消失，确定么？")){
+            var _id = ChatRoom.findOne({roomId: Router.current().params.roomId})._id;
+            ChatRoom.update(_id, {$set: {"records": []}});
+        }
     }
+
 });

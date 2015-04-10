@@ -181,8 +181,14 @@ body{
     padding: 5px 10px;
     border: 0;
     color: #FFF;
-}
-.sendMessage button:hover{
-    background: #333;
     transition: background 0.3s;
+}
+.sendMessage button[type=button]{
+    background: indianred;
+}
+.sendMessage button[type=button]:hover{
+    background: darkred;
+}
+.sendMessage button[type=submit]:hover{
+    background: #333;
 }
