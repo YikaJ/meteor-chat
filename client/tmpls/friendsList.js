@@ -1,11 +1,18 @@
 Template.friendsList.helpers({
     friends: function(){
-        return Meteor.users.findOne(Meteor.userId()).friends.map(function(item){
-            return {
-                name: item,
-                link: Meteor.absoluteUrl("dialog/" + item, {secure: false, replaceLocalhost: true})
-            }
-        });
+        var currentUser = Meteor.users.findOne(Meteor.userId());
+        if(currentUser && currentUser.friends){
+            return currentUser.chatRooms.map(function(item){
+                return {
+                    name: item.roomName,
+                    link: Meteor.absoluteUrl("dialog/" + item.roomId, {secure: false, replaceLocalhost: true})
+                }
+            });
+        }
     }
 });
+
+
+
+
 
