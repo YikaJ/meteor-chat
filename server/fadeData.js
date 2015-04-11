@@ -5,7 +5,7 @@ Meteor.startup(function(){
         users.forEach(function(username){
             Accounts.createUser({
                 username: username,
-                password: '123'
+                password: '111'
             });
         });
     }
