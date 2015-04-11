@@ -6,22 +6,17 @@ Template.dialog.onRendered(function(){
 //模板数据
 Template.dialog.helpers({
     //返回roomName
-    chatRoomName: function(){
-        var roomName = "";
-        var roomId = Router.current().params.roomId;
-        Meteor.users.findOne(Meteor.userId()).chatRooms.forEach(function(room){
-            if(room.roomId == roomId){
-                return roomName = room.roomName
-            }
-        });
-        return roomName;
+    roomName: function(){
+        if(Meteor.user()){
+            return getRoomName(ChatRoom.findOne({_id: Router.current().params.roomId}));
+        }
     },
     //返回record
     chatRecord: function(){
         //从url参数获取当前聊天room的Id
         var roomId = Router.current().params.roomId;
-        //加载records数据
-        return ChatRoom.findOne({roomId: roomId}) && ChatRoom.findOne({roomId: roomId}).records;
+        //从本地数据库加载records数据
+        return ChatRoom.findOne({_id: roomId}) && ChatRoom.findOne({_id: roomId}).records;
     },
     //判断是否是自己发的
     isYourself: function(author){
@@ -46,21 +41,19 @@ Template.dialog.events({
             content: content,
             createTime: createTime
         };
+        template.$('.sendMessage input').val("");
 
-        //仅支持id更新
-        var _id = ChatRoom.findOne({roomId: Router.current().params.roomId})._id;
-        ChatRoom.update(_id, {$push:{records: newRecord}}, function(){
+        //仅支持id更新,本地数据库的变化会推送到远程数据库
+        ChatRoom.update(Router.current().params.roomId, {$push:{records: newRecord}}, function(){
             //更改浏览器状态
-            template.$('.sendMessage input').val("");
-            template.$(".chatting").scrollTop(10000);
+            template.$(".chatting").scrollTop(template.$(".chatting ul").height() + 1000);
         });
     },
 
     // 删除记录
     "click .sendMessage button[type=button]": function(event, template){
         if(confirm("您的聊天记录将会消失，确定么？")){
-            var _id = ChatRoom.findOne({roomId: Router.current().params.roomId})._id;
-            ChatRoom.update(_id, {$set: {"records": []}});
+            ChatRoom.update(Router.current().params.roomId, {$set: {"records": []}});
         }
     }
 

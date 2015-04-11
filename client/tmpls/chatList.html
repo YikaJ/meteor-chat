@@ -1,0 +1,15 @@
+<template name="chatList">
+  <div class="friendsList">
+      <div class="friendsList-header clearfix">
+        <a href="/">聊天列表</a>
+        <a id="newChatRoom" href="javascript:">发起群聊</a>
+      </div>
+      <div class="list">
+        <ul>
+            {{#each chatList}}
+              <li><a href="{{link}}">{{name}}</a></li>
+            {{/each}}
+        </ul>
+      </div>
+    </div>
+</template>

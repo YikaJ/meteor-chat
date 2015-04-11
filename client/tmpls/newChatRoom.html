@@ -1,0 +1,22 @@
+<template name="newChatRoom">
+  <div class="rightContent newChatRoom">
+    <header>
+      <h3 class="clearfix">
+        <span class="fl">请选择小组成员</span>
+        <span class="fr showCount">已选择了 <output>0</output> 位成员</span>
+      </h3>
+    </header>
+    <form class="selectMembers">
+      <div class="content">
+        <ul class="clearfix">
+          {{#each friends}}
+            <li><input type="checkbox" name="members" value="{{this}}" id="{{this}}"/><label for="{{this}}">{{this}}</label></li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="sendMessage">
+        <button type="submit">确认选择</button>
+      </div>
+    </form>
+  </div>
+</template>

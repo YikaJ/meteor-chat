@@ -1,15 +1,15 @@
 <template name="dialog">
-    <div class="dialog">
+    <div class="rightContent dialog">
         <header>
-            <h3>{{chatRoomName}}</h3>
+            <h3>{{roomName}}</h3>
         </header>
-        <div class="chatting">
+        <div class="content chatting">
           <ul>
               {{#each chatRecord}}
                 <li>
                   <div class="time">{{createTime}}</div>
                   <span class="{{isYourself author}}">{{author}}: </span>
-                  <span class="content">{{content}}</span>
+                  <span>{{content}}</span>
                 </li>
               {{/each}}
           </ul>
