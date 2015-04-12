@@ -18,7 +18,9 @@ Template.newChatRoom.events({
     "submit .selectMembers": function(event, template){
         event.preventDefault();
         var members = [Meteor.user().username];
-        template.$("input[type=checkbox]:checked").each(function(index, item){
+        var checked = template.$("input[type=checkbox]:checked");
+        if(checked.length <= 0) return alert("请选择要发起群聊的好友！");
+        checked.each(function(index, item){
             members.push(item.value);
         });
         var roomNewId = ChatRoom.insert({

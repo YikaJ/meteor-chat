@@ -3,6 +3,10 @@ Template.dialog.onRendered(function(){
     var _this = this;
 
     this.$(".chatting").scrollTop(10000);
+    var currentRoomId = Router.current().params.roomId;
+
+    //确定当前聊天室窗口
+    this.$(".chatting").parents("body").find("#" + currentRoomId).addClass("active");
 
     //利用_uihooks来控制模板响应渲染，来获取到最新响应的数据.还支持insertElement，moveElement和removeElement。
     this.find(".chatting ul")._uihooks = {
@@ -10,7 +14,8 @@ Template.dialog.onRendered(function(){
             $(node).hide().insertBefore(next).fadeIn();
             _this.$(".chatting").scrollTop(_this.$(".chatting ul").height() + 1000);
         }
-    }
+    };
+
 });
 
 //模板数据

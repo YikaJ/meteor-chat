@@ -135,6 +135,9 @@ body{
     color: #000;
 }
 
+.friendsList li a.notify{
+    background: #CFEFAC;
+}
 
 /*
  * 右侧框
@@ -160,7 +163,12 @@ body{
     background: #FFF;
     overflow: auto;
 }
-
+.sendMessage button[type=submit]{
+    background: #c0c0c0;
+}
+.sendMessage button[type=submit]:hover{
+    background: #333;
+}
 /*
  * 发起群聊内容
  */
@@ -230,7 +238,4 @@ body{
 }
 .sendMessage button[type=button]:hover{
     background: darkred;
-}
-.sendMessage button[type=submit]:hover{
-    background: #333;
 }

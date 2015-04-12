@@ -12,6 +12,7 @@ Template.login.events({
             if(err){
                 return alert(err.reason);
             }
+            Router.go("/");
         });
     }
 });
