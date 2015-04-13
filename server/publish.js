@@ -17,3 +17,8 @@ Meteor.publish("updateUser", function(newData){
     if(!this.userId) return this.ready();
     Meteor.users.update({_id: this.userId}, newData);
 });
+
+// 清空没有成员的空聊天室
+Meteor.publish("clearEmptyRoom", function(roomId){
+    ChatRoom.remove({"_id": roomId, "members": []});
+});

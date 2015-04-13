@@ -20,6 +20,8 @@ Template.dialog.onRendered(function(){
 
 //模板数据
 Template.dialog.helpers({
+    //返回当前chatRoom的属性
+
     //返回roomName
     roomName: function(){
         if(Meteor.user()){
@@ -27,11 +29,11 @@ Template.dialog.helpers({
         }
     },
     //返回record
-    chatRecord: function(){
+    chatRoom: function(){
         //从url参数获取当前聊天room的Id
         var roomId = Router.current().params.roomId;
         //从本地数据库加载records数据
-        return ChatRoom.findOne({_id: roomId}) && ChatRoom.findOne({_id: roomId}).records;
+        return ChatRoom.findOne({_id: roomId});
     },
     //判断是否是自己发的
     isYourself: function(author){
@@ -65,10 +67,18 @@ Template.dialog.events({
         });
     },
 
-    // 删除记录
+    // 退出群聊
     "click .sendMessage button[type=button]": function(event, template){
-        if(confirm("您的聊天记录将会消失，确定么？")){
-            ChatRoom.update(Router.current().params.roomId, {$set: {"records": []}});
+        if(confirm("您确定将要退出此群聊吗？")){
+            var roomId = Router.current().params.roomId;
+            var members = ChatRoom.findOne(roomId).members;
+            console.log(members);
+            // 过滤出当前用户,退出群聊，若群聊成员为空，则删除该chatRoom
+            ChatRoom.update(roomId, {$pull: {"members": Meteor.user().username}}, function(){
+                //本地数据库已经没有该聊天室记录，需要提交到服务器验证是否为空
+                Meteor.subscribe("clearEmptyRoom", roomId);
+            });
+            Router.go("/");
         }
     }
 
