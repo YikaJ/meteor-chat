@@ -72,7 +72,6 @@ Template.dialog.events({
         if(confirm("您确定将要退出此群聊吗？")){
             var roomId = Router.current().params.roomId;
             var members = ChatRoom.findOne(roomId).members;
-            console.log(members);
             // 过滤出当前用户,退出群聊，若群聊成员为空，则删除该chatRoom
             ChatRoom.update(roomId, {$pull: {"members": Meteor.user().username}}, function(){
                 //本地数据库已经没有该聊天室记录，需要提交到服务器验证是否为空

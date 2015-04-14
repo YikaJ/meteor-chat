@@ -2,6 +2,7 @@ Template.chatList.onRendered(function(){
     var singletonFlag = false;
     var oldRecord = [];
     var _this = this;
+    // 消息提醒功能
     this.autorun(function(){
         var newRecord = [];
         // 通过单例模式获取初始数据
@@ -11,6 +12,7 @@ Template.chatList.onRendered(function(){
         }
         if(oldRecord.length > 0){
             newRecord = ChatRoom.find().fetch();
+            if(oldRecord.length !== newRecord.length) return false;
             // notification里是更新后的数据
             var notifyRecord = newRecord.filter(function(chatRoom, index){
                 return !EJSON.equals(chatRoom, oldRecord[index]);
