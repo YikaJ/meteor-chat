@@ -12,6 +12,7 @@ Template.chatList.onRendered(function(){
         }
         if(oldRecord.length > 0){
             newRecord = ChatRoom.find().fetch();
+            //防止删除聊天室后，导致旧记录与新记录不匹配的BUG
             if(oldRecord.length !== newRecord.length) return false;
             // notification里是更新后的数据
             var notifyRecord = newRecord.filter(function(chatRoom, index){
